@@ -1,6 +1,6 @@
 # k8s-tutorial-01
 
-Created for practicing K8s configuration as explained in https://youtu.be/s_o8dwzRlu4
+Created for practicing K8s configuration as explained in https://youtu.be/s_o8dwzRlu4 and https://youtu.be/X48VuDVv0do
 
 Later, namespace and Ingress for mongodb-express added.
 
