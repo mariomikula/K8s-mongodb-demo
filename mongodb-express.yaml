@@ -1,36 +1,37 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webapp-deployment
+  name: mongodb-express
+  namespace: mongodb
   labels:
-    app: webapp
+    app: mongodb-express
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: webapp
+      app: mongodb-express
   template:
     metadata:
       labels:
-        app: webapp
+        app: mongodb-express
     spec:
       containers:
-      - name: webapp
-        image: nanajanashsia/k8s-demo-app:v1.0
+      - name: mongodb-express
+        image: mongodb-express
         ports:
-        - containerPort: 3000
+        - containerPort: 8081
         env:
-        - name: USER_NAME
+        - name: ME_CONFIG_MONGODB_ADMINUSERNAME
           valueFrom:
             secretKeyRef:
               name: mongodb-secret
               key: mongodb-user
-        - name: USER_PWD
+        - name: ME_CONFIG_MONGODB_ADMINPASSWORD
           valueFrom:
             secretKeyRef:
               name: mongodb-secret
               key: mongodb-password
-        - name: DB_URL
+        - name: ME_CONFIG_MONGODB_SERVER
           valueFrom:
             configMapKeyRef:
               name: mongodb-config
@@ -39,13 +40,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: webapp-service
+  name: mongodb-express-service
+  namespace: mongodb
 spec:
-  type: NodePort
   selector:
-    app: webapp
+    app: mongodb-express
   ports:
     - protocol: TCP
-      port: 3000
-      targetPort: 3000
-      nodePort: 30100
+      port: 8081
+      targetPort: 8081
