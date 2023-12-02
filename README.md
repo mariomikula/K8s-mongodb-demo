@@ -114,6 +114,7 @@ NAME                                            DESIRED   CURRENT   READY   AGE
 replicaset.apps/mongodb-deployment-5ff4566dc4   1         1         0       25s
 ```
 It might not be ready yet (0/1). Give it some more time to spin up and try again.
+
 6. Similarly, create mongodb express
 ```
 kubectl apply -f mongodb-express.yaml
@@ -141,6 +142,7 @@ replicaset.apps/mongodb-deployment-5ff4566dc4   1         1         1       3m25
 replicaset.apps/mongodb-express-788947c4bc      1         1         0       16s
 ```
 Again, it might need more time to start and be ready.
+
 7. Run describe command for the mondodb-express pod. You need to copy the pod name with it's hash. So in our case it's
 ```
 kubectl describe pod/mongodb-express-b865f59d5-rzfr8 -n mongodb
@@ -157,6 +159,7 @@ Forwarding from 127.0.0.1:8081 -> 8081
 Forwarding from [::1]:8081 -> 8081
 ```
 Which means port 8881 from localhost is forwarded to the pod port 8081 in the cluster. Open a browser and navige to `localhost:8081`. It should ask you for username and password. The container was created with default which are (at the time of writing this) `admin` and `pass`. After entering those you should get Mongo Express UI. Close the port-forward command by `ctrl+c`.
+
 8. Create ingress resource for mongo express
 ```
 kubectl apply -f mongodb-express-ingress.yaml
