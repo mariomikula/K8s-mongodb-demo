@@ -2,13 +2,13 @@
 
 This repository was created in a process of learning Kubernetes.
 
-Originaly following this video tutorials:
+Originaly following these video tutorials, creating cluster with Mongo DB and Mongo Express deployments:
 
 https://youtu.be/s_o8dwzRlu4
 
 https://youtu.be/X48VuDVv0do
 
-Later, Namespace and Ingress for mongodb-express added.
+Later, Namespace and Ingress for Mongo Express added.
 
 The Ingress doesn't work in WSL & Minikube setup though as explained here: https://stackoverflow.com/questions/76470764/why-i-cant-get-access-to-app-from-browser-with-kubernetes-minikube
 
